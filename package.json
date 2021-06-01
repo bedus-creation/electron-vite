@@ -1,20 +1,59 @@
 {
-    "name": "hrm",
-    "version": "0.0.0",
-    "main": "main.js",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview",
-        "electron:start": "electron ."
-    },
-    "dependencies": {
-        "electron": "^13.0.1",
-        "vue": "^3.0.5"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-vue": "^1.2.3",
-        "@vue/compiler-sfc": "^3.0.5",
-        "vite": "^2.3.5"
+  "name": "hrm",
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "electron:start": "electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "autoprefixer": "^10.2.6",
+    "electron-squirrel-startup": "^1.0.0",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.2",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "electron": "^13.0.1",
+    "vite": "^2.3.5"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "hrm"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
     }
+  }
 }
